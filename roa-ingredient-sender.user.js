@@ -4,7 +4,9 @@
 // @version      0.1
 // @description  In game ui to build a iwire list
 // @author       Batosi
-// @match        https://beta.avabur.com/game
+// @match        https://*avabur.com/game*
+// @downloadURL  https://github.com/Isotab/roa-ingredient-sender/raw/master/roa-ingredient-sender.user.js
+// @updateURL    https://github.com/Isotab/roa-ingredient-sender/raw/master/roa-ingredient-sender.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -107,5 +109,4 @@
 
 })(jQuery);
 
-//$(document).on('roa-ws:page', (e, data) => { console.log(data.page)})
 //$(document).one('roa-ws:page:inventory_ingredients', (e, data) => { console.log(data)})
