@@ -102,8 +102,15 @@
         }
         console.log(wires)
         let to = $("#ingredient-wire-to").val()
+        let i = 0
         wires.forEach((ingredients) => {
-            $("#ingredient-wire-results").append(`/iwire ${to} ${ingredients.join(', ')}<br />`)
+            // $("#ingredient-wire-results").append(`/iwire ${to} ${ingredients.join(', ')}<br />`)
+            setTimeout(()=> {
+                $("#chatMessage").html(`/iwire ${to} ${ingredients.join(', ')}`)
+                $("#chatSendMessage").click()    
+            }, ((i - 1) * 5500))
+            i++
+
         })
     })
 
