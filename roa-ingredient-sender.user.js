@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.0.2
+// @version      0.0.3
 // @description  In game ui to build a iwire list
 // @author       Batosi
-// @match        https://*avabur.com/game*
+// @match        https://*.avabur.com/game*
 // @downloadURL  https://github.com/Isotab/roa-ingredient-sender/raw/master/roa-ingredient-sender.user.js
 // @updateURL    https://github.com/Isotab/roa-ingredient-sender/raw/master/roa-ingredient-sender.user.js
 // @grant        none
