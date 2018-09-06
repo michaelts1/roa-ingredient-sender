@@ -15,6 +15,7 @@
     'use strict';
 
     let tableSelector = $("#inventoryOtherTable")
+    let debug = true
 
     let rebuildTable = (event, data) => {
         let ings = []
@@ -102,11 +103,15 @@
         }
         console.log(wires)
         let to = $("#ingredient-wire-to").val()
-        let i = 0
+        let i = 1
         wires.forEach((ingredients) => {
             // $("#ingredient-wire-results").append(`/iwire ${to} ${ingredients.join(', ')}<br />`)
             setTimeout(()=> {
-                $("#chatMessage").html(`/iwire ${to} ${ingredients.join(', ')}`)
+                let command = `/iwire ${to} ${ingredients.join(', ')}`
+                if (debug) {
+                    console.log('Wire Command: ' + command)
+                }
+                $("#chatMessage").html(command)
                 $("#chatSendMessage").click()    
             }, ((i - 1) * 5500))
             i++
