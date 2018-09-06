@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.0.4
+// @version      0.0.5
 // @description  In game ui to build a iwire list
 // @author       Batosi
 // @match        https://*.avabur.com/game*
