@@ -90,7 +90,7 @@
             }
 
             if (v > 0) {
-                itemsToSend.push($(this).attr('id') + ' ' + v)
+                itemsToSend.push(v + ' ' + $(this).attr('id'))
             }
         })
         if (itemsToSend.length === 0) {
