@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.1.0
+// @version      0.1.1
 // @description  In game ui to build a iwire list
 // @author       Batosi
 // @match        https://*.avabur.com/game*
@@ -15,7 +15,7 @@
     'use strict';
 
     let tableSelector = $("#inventoryOtherTable")
-    let debug = true
+    let debug = false
 
     let rebuildTable = (event, data) => {
         let ings = []
