@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.0.5
+// @version      0.0.6
 // @description  In game ui to build a iwire list
 // @author       Batosi
 // @match        https://*.avabur.com/game*
@@ -29,7 +29,7 @@
             data.result.forEach((ingredient) => {
                 if (ingredient.v <= 0) return
 
-                let nameChanged = ingredient.n.replace(/ /g, '_')
+                let nameChanged = ingredient.n.replace(/ /g, '_').replace('Chunk_of_', '')
 
                 let row = `
                 <tr>
