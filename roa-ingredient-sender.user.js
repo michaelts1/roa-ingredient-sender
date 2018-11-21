@@ -4,7 +4,7 @@
 // @version      0.1.1
 // @description  In game ui to build a iwire list
 // @author       Batosi
-// @match        https://*.avabur.com/game*
+// @match        https://beta.avabur.com/game*
 // @downloadURL  https://github.com/Isotab/roa-ingredient-sender/raw/master/roa-ingredient-sender.user.js
 // @updateURL    https://github.com/Isotab/roa-ingredient-sender/raw/master/roa-ingredient-sender.user.js
 // @grant        none
