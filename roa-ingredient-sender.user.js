@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.1.2
+// @version      0.2.0
 // @description  In game ui to build a iwire list
 // @author       Batosi
 // @match        https://beta.avabur.com/game*
@@ -13,6 +13,11 @@
 
 (function($) {
     'use strict';
+
+    Number.prototype.format = function(n, x) {
+        var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+        return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+    }
 
     let tableSelector = $("#inventoryOtherTable")
     let debug = false
@@ -26,19 +31,25 @@
         }
         setTimeout(() => {
             tableSelector.find("tr:gt(0)").remove()
+            let totalsType = 0
+            let totalsCount = new Number(0)
+
             data.result.forEach((ingredient) => {
                 if (ingredient.v <= 0) return
 
                 let nameChanged = ingredient.n.replace(/ /g, '_').replace('Chunk_of_', '')
+                let n = new Number(ingredient.v)
 
                 let row = `
                 <tr>
                     <td data-th="Item">${ingredient.n}</td>
-                    <td data-th="Amount">${ingredient.v}</td>
+                    <td data-th="Amount">${n.format(0)}</td>
                     <td data-th="Actions">`
 
                 
                 if (ingredient.m) {
+                    totalsType++
+                    totalsCount+= ingredient.v
                     row = row + `<input class="ingredient-wire-input" data-max="${ingredient.v}" type="number" id="${nameChanged}" />
                         <button class="ingredient-wire-max-item" data-item="${nameChanged}" data-value="${ingredient.v}">Max</button>
                         <a class="marketIngredientLink" data-id="${ingredient.iid}" data-amount="${ingredient.v}">Market</a>
@@ -49,6 +60,12 @@
                 `
                 tableSelector.append(row)
             })
+            tableSelector.append(`
+                <tr>
+                    <td colspan="2">Total Types: ${totalsType}</td>
+                    <td>Total Count: ${totalsCount.format(0)}
+                </tr>
+            `)
         }, 100)
         $(document).one('roa-ws:page', (e, d) => { 
             $("#ingredient-wire-container").hide() 
