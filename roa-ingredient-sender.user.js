@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.2.0
+// @version      0.3.0
 // @description  In game ui to build a iwire list
 // @author       Batosi
 // @match        https://beta.avabur.com/game*
@@ -39,11 +39,13 @@
 
                 let nameChanged = ingredient.n.replace(/ /g, '_').replace('Chunk_of_', '')
                 let n = new Number(ingredient.v)
+                let cost = new Number(ingredient.cost)
 
                 let row = `
                 <tr>
                     <td data-th="Item">${ingredient.n}</td>
                     <td data-th="Amount">${n.format(0)}</td>
+                    <td data-th="Current Market Price">${cost.format(0)}</td>
                     <td data-th="Actions">`
 
                 
@@ -122,7 +124,6 @@
         let to = $("#ingredient-wire-to").val()
         let i = 1
         wires.forEach((ingredients) => {
-            // $("#ingredient-wire-results").append(`/iwire ${to} ${ingredients.join(', ')}<br />`)
             setTimeout(()=> {
                 let command = `/iwire ${to} ${ingredients.join(', ')}`
                 if (debug) {
