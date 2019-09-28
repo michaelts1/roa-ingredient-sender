@@ -11,4 +11,5 @@ Auto sending is split into chunks of 10 as that is the max the game supports
 TODO:
 * Figure out how to set up autofill for usernames
 * Fix the layout as it is a bit fugly atm
-* Find out if Vysn is gonna like this existing, may need to remove the auto send feature
+* Figure out wait for confirmation of last wire before starting the timer on next instead of setting up in 5.5 second intervals to account for any delays
+* Lots of other crap that may or may not get done depending on my lazyness x.x
