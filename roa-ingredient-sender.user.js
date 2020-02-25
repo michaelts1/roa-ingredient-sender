@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.4.0
+// @version      0.4.1
 // @description  In game ui to build a iwire list
 // @author       Batosi
 // @match        https://*.avabur.com/game*
@@ -116,25 +116,31 @@
         if (itemsToSend.length === 0) {
             return
         }
-        let wires = []
-        while(itemsToSend.length > 0) {
-            wires.push(itemsToSend.splice(0, 10))
-        }
-        console.log(wires)
+        // let wires = []
+        // while(itemsToSend.length > 0) {
+        //     wires.push(itemsToSend.splice(0, 10))
+        // }
+        // console.log(wires)
         let to = $("#ingredient-wire-to").val()
-        let i = 1
-        wires.forEach((ingredients) => {
-            setTimeout(()=> {
-                let command = `/iwire ${to} ${ingredients.join(', ')}`
-                if (debug) {
-                    console.log('Wire Command: ' + command)
-                }
-                $("#chatMessage").html(command)
-                $("#chatSendMessage").click()    
-            }, ((i - 1) * 5500))
-            i++
+        let command = `/iwire ${to} ${itemsToSend.join(', ')}`
+        if (debug) {
+            console.log('Wire Command: ' + command)
+        }
+        $("#chatMessage").html(command)
+        $("#chatSendMessage").click()    
+        // let i = 1
+        // wires.forEach((ingredients) => {
+        //     setTimeout(()=> {
+        //         let command = `/iwire ${to} ${ingredients.join(', ')}`
+        //         if (debug) {
+        //             console.log('Wire Command: ' + command)
+        //         }
+        //         $("#chatMessage").html(command)
+        //         $("#chatSendMessage").click()    
+        //     }, ((i - 1) * 5500))
+        //     i++
 
-        })
+        // })
         $(".closeModal").click()
     })
 
