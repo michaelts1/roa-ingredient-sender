@@ -33,6 +33,7 @@
             tableSelector.find("tr:gt(0)").remove()
             let totalsType = 0
             let totalsCount = new Number(0)
+            let totalPrice = new Number(0)
 
             data.result.forEach((ingredient) => {
                 if (ingredient.v <= 0) return
@@ -52,6 +53,7 @@
                 if (ingredient.m) {
                     totalsType++
                     totalsCount+= ingredient.v
+                    if (!isNaN(cost)) totalPrice += cost*n
                     row = row + `<input class="ingredient-wire-input" data-max="${ingredient.v}" type="number" id="${nameChanged}" />
                         <button class="ingredient-wire-max-item" data-item="${nameChanged}" data-value="${ingredient.v}">Max</button>
                         <a class="marketIngredientLink" data-id="${ingredient.iid}" data-amount="${ingredient.v}">Market</a>
@@ -65,7 +67,8 @@
             tableSelector.append(`
                 <tr>
                     <td colspan="2">Total Types: ${totalsType}</td>
-                    <td>Total Count: ${totalsCount.format(0)}
+                    <td>Total Count: ${totalsCount.format(0)}</td>
+                    <td>Total Price: ${totalPrice.format(0)}
                 </tr>
             `)
         }, 100)
