@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avabur Ingredient Sender
 // @namespace    some_random_string_alujgfkadsglagfyuifgsidgf3
-// @version      0.4.1
+// @version      0.4.2
 // @description  In game ui to build a iwire list
 // @author       Batosi
 // @match        https://*.avabur.com/game*
@@ -54,7 +54,7 @@
                     totalsType++
                     totalsCount+= ingredient.v
                     if (!isNaN(cost)) totalPrice += cost*n
-                    row = row + `<input class="ingredient-wire-input" data-max="${ingredient.v}" type="number" id="${nameChanged}" />
+                    row = row + `<input class="ingredient-wire-input" data-max="${ingredient.v}" type="number" id="${nameChanged}" size="8" />
                         <button class="ingredient-wire-max-item" data-item="${nameChanged}" data-value="${ingredient.v}">Max</button>
                         <a class="marketIngredientLink" data-id="${ingredient.iid}" data-amount="${ingredient.v}">Market</a>
                         <a class="wireIngredientLink" data-id="${ingredient.iid}" data-amount="${ingredient.v}">Send</a>`
@@ -119,11 +119,6 @@
         if (itemsToSend.length === 0) {
             return
         }
-        // let wires = []
-        // while(itemsToSend.length > 0) {
-        //     wires.push(itemsToSend.splice(0, 10))
-        // }
-        // console.log(wires)
         let to = $("#ingredient-wire-to").val()
         let command = `/iwire ${to} ${itemsToSend.join(', ')}`
         if (debug) {
@@ -131,19 +126,6 @@
         }
         $("#chatMessage").html(command)
         $("#chatSendMessage").click()    
-        // let i = 1
-        // wires.forEach((ingredients) => {
-        //     setTimeout(()=> {
-        //         let command = `/iwire ${to} ${ingredients.join(', ')}`
-        //         if (debug) {
-        //             console.log('Wire Command: ' + command)
-        //         }
-        //         $("#chatMessage").html(command)
-        //         $("#chatSendMessage").click()    
-        //     }, ((i - 1) * 5500))
-        //     i++
-
-        // })
         $(".closeModal").click()
     })
 
